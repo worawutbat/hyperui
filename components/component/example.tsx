@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent, useEffect, useState, useRef } from 'react'
 
 import { useInView } from 'react-intersection-observer'
 
@@ -23,12 +23,15 @@ type Props = {
   spacing: string
 }
 
-const Test: FunctionComponent<Props> = ({ name, item, spacing }) => {
+const Example: FunctionComponent<Props> = ({ name, item, spacing }) => {
   let [code, setCode] = useState<string>()
   let [html, setHtml] = useState<string>()
   let [view, setView] = useState<boolean>(true)
   let [width, setWidth] = useState<string>('100%')
   let [range, setRange] = useState<number>(1348)
+  let [loaded, setLoaded] = useState<boolean>(false)
+
+  let iframeElement = useRef(null)
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -60,6 +63,14 @@ const Test: FunctionComponent<Props> = ({ name, item, spacing }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView])
+
+  useEffect(() => {
+    iframeElement.current.addEventListener('load', () => {
+      iframeElement.current.style.height = `${iframeElement.current.contentWindow.document.body.scrollHeight}px`
+
+      setLoaded(true)
+    })
+  }, [html])
 
   useEffect(() => {
     prism.highlightAll()
@@ -117,7 +128,7 @@ const Test: FunctionComponent<Props> = ({ name, item, spacing }) => {
         </div>
 
         <div className="relative">
-          {!code && (
+          {!loaded && (
             <div
               className="absolute inset-0 flex items-center justify-center bg-white rounded-lg"
               aria-hidden="true"
@@ -128,7 +139,8 @@ const Test: FunctionComponent<Props> = ({ name, item, spacing }) => {
 
           <div className={view ? 'block' : 'hidden'}>
             <iframe
-              className="bg-white w-full h-[400px] lg:transition-all lg:h-[600px] ring-2 ring-black rounded-lg"
+              ref={iframeElement}
+              className="w-full bg-white rounded-lg lg:transition-all ring-2 ring-black"
               loading="lazy"
               srcDoc={html}
               style={{ maxWidth: width }}
@@ -154,4 +166,4 @@ const Test: FunctionComponent<Props> = ({ name, item, spacing }) => {
   )
 }
 
-export default Test
+export default Example
