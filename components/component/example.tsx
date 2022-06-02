@@ -65,11 +65,16 @@ const Example: FunctionComponent<Props> = ({ name, item, spacing }) => {
   }, [inView])
 
   useEffect(() => {
-    iframeElement.current.addEventListener('load', () => {
-      iframeElement.current.style.height = `${iframeElement.current.contentWindow.document.body.scrollHeight}px`
+    if (iframeElement.current) {
+      const iframe = iframeElement.current as HTMLIFrameElement
+      const iframeWindow = iframe.contentWindow as Window
 
-      setLoaded(true)
-    })
+      iframe.addEventListener('load', () => {
+        iframe.style.height = `${iframeWindow.document.body.scrollHeight}px`
+
+        setLoaded(true)
+      })
+    }
   }, [html])
 
   useEffect(() => {
