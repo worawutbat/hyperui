@@ -28,8 +28,8 @@ export async function getStaticProps() {
 }
 
 type Props = {
-  marketingCategory: Array<Category>
-  applicationCategory: Array<Category>
+  marketingCategory: Category
+  applicationCategory: Category
 }
 
 const Home: NextPage<Props> = ({ marketingCategory, applicationCategory }) => {
@@ -42,17 +42,18 @@ const Home: NextPage<Props> = ({ marketingCategory, applicationCategory }) => {
         your own components 🥳.
       </Banner>
 
-      <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-8 sm:px-6 lg:px-8 sm:pb-24">
+      <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-16 sm:px-6 lg:px-8 sm:pb-24">
         <Listing
           title={marketingCategory.title}
           category={marketingCategory.slug}
           collections={marketingCategory.children}
         />
 
-        {/* <Listing
+        <Listing
           title={applicationCategory.title}
+          category={applicationCategory.slug}
           collections={applicationCategory.children}
-        /> */}
+        />
       </div>
     </>
   )
