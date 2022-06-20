@@ -28,7 +28,11 @@ const Listing: FunctionComponent<Props> = ({
         {collections.map((collection: Collection) => {
           return (
             <div key={collection.title}>
-              <h2 className="font-medium">{collection.title}</h2>
+              <h2 className="font-medium">
+                <Link href={`/components/${category}/${collection.slug}`}>
+                  {collection.title}
+                </Link>
+              </h2>
 
               <p className="mt-1 text-gray-700 max-w-prose">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
