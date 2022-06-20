@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
 
+import { Category } from '../interface/category'
+
 import { getCategoryBySlug } from '../lib/categories'
 
 import Banner from '../components/content/banner'
 import Listing from '../components/category/listing'
-import { Category } from '../interface/category'
 
 export async function getStaticProps() {
   const marketingCategory = getCategoryBySlug('marketing', [
