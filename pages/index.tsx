@@ -20,10 +20,17 @@ export async function getStaticProps() {
     'collections',
   ])
 
+  const ecommerceCategory = getCategoryBySlug('ecommerce', [
+    'title',
+    'slug',
+    'collections',
+  ])
+
   return {
     props: {
       marketingCategory,
       applicationCategory,
+      ecommerceCategory,
     },
   }
 }
@@ -31,9 +38,14 @@ export async function getStaticProps() {
 type Props = {
   marketingCategory: Category
   applicationCategory: Category
+  ecommerceCategory: Category
 }
 
-const Home: NextPage<Props> = ({ marketingCategory, applicationCategory }) => {
+const Home: NextPage<Props> = ({
+  marketingCategory,
+  applicationCategory,
+  ecommerceCategory,
+}) => {
   return (
     <>
       <Banner title="Open Source Tailwind CSS Components" subtitle="HyperUI">
@@ -54,6 +66,12 @@ const Home: NextPage<Props> = ({ marketingCategory, applicationCategory }) => {
           title={applicationCategory.title}
           category={applicationCategory.slug}
           collections={applicationCategory.children}
+        />
+
+        <Listing
+          title={ecommerceCategory.title}
+          category={ecommerceCategory.slug}
+          collections={ecommerceCategory.children}
         />
       </div>
     </>
