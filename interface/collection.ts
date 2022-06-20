@@ -1,12 +1,8 @@
-import { Component, ComponentCard } from './component'
+import { ComponentCard } from './component'
 
 export interface Collection {
   title: string
-  components: Array<Component>
+  slug: string
   children: Array<ComponentCard>
+  components: string[]
 }
-
-// export interface SubCollection {
-//   title: string
-//   components: Array<Component>
-// }

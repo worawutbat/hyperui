@@ -4,6 +4,7 @@ import { getCategoryBySlug } from '../lib/categories'
 
 import Banner from '../components/content/banner'
 import Listing from '../components/category/listing'
+import { Category } from '../interface/category'
 
 export async function getStaticProps() {
   const marketingCategory = getCategoryBySlug('marketing', [
@@ -27,8 +28,8 @@ export async function getStaticProps() {
 }
 
 type Props = {
-  marketingCategory: any
-  applicationCategory: any
+  marketingCategory: Array<Category>
+  applicationCategory: Array<Category>
 }
 
 const Home: NextPage<Props> = ({ marketingCategory, applicationCategory }) => {

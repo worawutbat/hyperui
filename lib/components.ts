@@ -2,9 +2,8 @@ import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 
-import { getCategorySlugs, getCategorys } from './categories'
-import { getCollectionSlugs } from './collections'
 import { Collection } from '../interface/collection'
+import { getCategories } from './categories'
 
 const componentsDirectory = join(process.cwd(), '/data/components')
 
@@ -46,11 +45,11 @@ export function getComponentBySlug(slug: string, fields: string[] = []) {
 }
 
 export function componentSlugs() {
-  let categories = getCategorys(['slug', 'collections'])
+  let categories = getCategories(['slug', 'collections'])
 
-  return categories.flatMap((category) =>
-    category.children.flatMap((collection) =>
-      collection.components.flatMap((component) => {
+  return categories.flatMap((category: any) =>
+    category.children.flatMap((collection: Collection) =>
+      collection.components.flatMap((component: string) => {
         return {
           params: {
             category: category.slug,

@@ -90,9 +90,7 @@ type Params = {
   }
 }
 
-export async function getStaticProps({
-  params: { category, collection, slug },
-}: Params) {
+export async function getStaticProps({ params: { slug } }: Params) {
   const source = fs.readFileSync(`data/components/${slug}.mdx`)
 
   const { content, data } = matter(source)

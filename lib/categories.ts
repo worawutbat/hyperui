@@ -52,7 +52,7 @@ export function categorySlugs() {
   })
 }
 
-export function getCategorys(fields: string[] = []) {
+export function getCategories(fields: string[] = []) {
   const slugs = getCategorySlugs()
   const collections = slugs.map((slug) => getCategoryBySlug(slug, fields))
 
