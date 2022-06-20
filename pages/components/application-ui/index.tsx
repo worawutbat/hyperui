@@ -2,15 +2,15 @@ import type { NextPage } from 'next'
 
 import Head from 'next/head'
 
-import { Category } from '../../interface/category'
+import { Category } from '../../../interface/category'
 
-import { getCategoryBySlug } from '../../lib/categories'
+import { getCategoryBySlug } from '../../../lib/categories'
 
-import Banner from '../../components/content/banner'
-import Listing from '../../components/category/listing'
+import Banner from '../../../components/content/banner'
+import Listing from '../../../components/category/listing'
 
 export async function getStaticProps() {
-  const applicationCategory = getCategoryBySlug('application', [
+  const applicationCategory = getCategoryBySlug('application-ui', [
     'title',
     'slug',
     'collections',

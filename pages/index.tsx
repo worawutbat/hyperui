@@ -14,7 +14,7 @@ export async function getStaticProps() {
     'collections',
   ])
 
-  const applicationCategory = getCategoryBySlug('application', [
+  const applicationCategory = getCategoryBySlug('application-ui', [
     'title',
     'slug',
     'collections',

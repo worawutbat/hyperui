@@ -52,19 +52,19 @@ const Header: FunctionComponent = () => {
           <nav className="hidden sm:block">
             <ul className="flex items-center gap-4">
               <li>
-                <Link href="marketing">
+                <Link href="/components/marketing">
                   <a className="text-sm font-medium text-gray-700">Marketing</a>
                 </Link>
               </li>
 
               <li>
-                <Link href="ecommerce">
+                <Link href="/components/ecommerce">
                   <a className="text-sm font-medium text-gray-700">eCommerce</a>
                 </Link>
               </li>
 
               <li>
-                <Link href="application-ui">
+                <Link href="/components/application-ui">
                   <a className="text-sm font-medium text-gray-700">
                     Application UI
                   </a>
@@ -77,13 +77,13 @@ const Header: FunctionComponent = () => {
               ></li>
 
               <li>
-                <Link href="blog">
+                <Link href="/blog">
                   <a className="text-sm font-medium text-gray-700">Blog</a>
                 </Link>
               </li>
 
               <li>
-                <Link href="faqs">
+                <Link href="/faqs">
                   <a className="text-sm font-medium text-gray-700">FAQs</a>
                 </Link>
               </li>

@@ -1,5 +1,7 @@
 import type { FunctionComponent } from 'react'
 
+import Link from 'next/link'
+
 import { Collection } from '../../interface/collection'
 import { ComponentCard } from '../../interface/component'
 
@@ -18,7 +20,9 @@ const Listing: FunctionComponent<Props> = ({
 }) => {
   return (
     <div>
-      <h2 className="text-xl font-medium">{title}</h2>
+      <h2 className="text-xl font-medium">
+        <Link href={`/components/${category}`}>{title}</Link>
+      </h2>
 
       <div className="mt-4 space-y-8">
         {collections.map((collection: Collection) => {
